@@ -711,6 +711,7 @@ describe('DashParser Live', function() {
           ignoreDrmInfo: false,
           xlinkFailGracefully: false,
           defaultPresentationDelay: 10,
+          ignoreMinBufferTime: false
         },
       });
 
