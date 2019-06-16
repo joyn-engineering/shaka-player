@@ -710,8 +710,7 @@ describe('DashParser Live', function() {
           customScheme: function(node) { return null; },
           ignoreDrmInfo: false,
           xlinkFailGracefully: false,
-          defaultPresentationDelay: 10,
-          ignoreMinBufferTime: false
+          defaultPresentationDelay: 10
         },
       });
 
