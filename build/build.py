@@ -51,6 +51,7 @@ import generateLocalizations
 import shakaBuildHelpers
 
 
+source_base = shakaBuildHelpers.get_source_base()
 shaka_version = shakaBuildHelpers.calculate_version()
 
 common_closure_opts = [
@@ -134,7 +135,6 @@ class Build(object):
     Returns:
       The full path to the build file, or None if not found.
     """
-    source_base = shakaBuildHelpers.get_source_base()
     local_path = os.path.join(root, name)
     build_path = os.path.join(source_base, 'build', 'types', name)
     if (os.path.isfile(local_path) and os.path.isfile(build_path)
@@ -282,7 +282,7 @@ class Build(object):
     closure = compiler.ClosureCompiler(self.include, build_name)
 
     # Don't pass node modules to the extern generator.
-    local_include = set([f for f in self.include if 'node_modules' not in f])
+    local_include = set([f for f in self.include if source_base + '/node_modules' not in f])
     generator = compiler.ExternGenerator(local_include, build_name)
 
     closure_opts = common_closure_opts + common_closure_defines
